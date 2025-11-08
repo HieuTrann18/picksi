@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Picksi - Thời Trang Sang Trọng</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/source.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand d-flex justify-content-center align-items-center gap-2" href="#" onclick="showHome()">
+          <img width="50px" height="50px" src="./assets/images/logo.jpg" alt=""> 
+          <p class="m-0">Picksi</p>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav ">
+            <li class="nav-item">
+              <a class="nav-link" href="#" onclick="showHome()">Trang chủ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Sản phẩm
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#" onclick="showMenProducts()"
+                    >Thời trang Nam</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="showWomenProducts()"
+                    >Thời trang Nữ</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Liên hệ
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="showContact('picksi')"
+                    >Liên hệ với Picksi</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    onclick="showContact('seller')"
+                    >Liên hệ với người bán</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+
+            <div id="userSection" class="d-none align-items-center me-3">
+                <a style="text-decoration: none; margin-right: 15px; color: white;" href="#" onclick="showMyProducts()">Cửa hàng của tôi</a>
+              <span class="user-info me-2"
+                >Hi! <span id="username"></span
+              ></span>
+              <span class="user-info me-2"
+                >Số dư: <span id="balance">0</span> $C</span
+              >
+              <button
+                class="balance-btn me-3"
+                onclick="showTopUpModal()"
+                title="Nạp tiền"
+              >
+                +
+              </button>
+
+            <div id="notificationWrapper" class="position-relative me-3" style="cursor: pointer;">
+                <i class="bi bi-bell-fill text-white fs-5"></i>
+                <span id="notificationBadge" style="width: 12px; height: 12px;" class="position-absolute top-0 start-100 translate-middle bg-danger text-white rounded-circle p-1 fs-7"></span>
+
+                <!-- Popup thông báo -->
+                <!-- <div id="notificationPopup" class="position-absolute end-0 mt-2 bg-white shadow-lg rounded p-3" style="width: 250px; display: none; z-index: 1050;">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <p class="mb-0 small"><strong>Nguyen Dieu Linh</strong> đã đồng ý swap</p>
+                        <span id="closeNotification" style="cursor: pointer;">&times;</span>
+                    </div>
+                    <div class="text-xs text-muted">Vừa xong</div>
+                </div> -->
+
+                    <div id="notificationPopup" class="position-absolute end-0 mt-2 bg-white shadow-lg rounded p-3" style="width: 250px; display: none; z-index: 1050;">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <p class="mb-0 small"><strong>Ai đó đang muốn swap với bạn</strong> <a href="#" onclick="openSwapDetailsDemo()">Chi tiết</a></p>
+                        <span id="closeNotification" style="cursor: pointer;">&times;</span>
+                    </div>
+                    <div class="text-xs text-muted">Vừa xong</div>
+                </div>
+            </div>
+
+            
+
+              <button
+              style="background-color: transparent; border: none; color: white;"
+                class=" btn-outline-light border-0 btn-sm"
+                onclick="logout()"
+              >
+                Logout
+              </button>
+
+
+            </div>
+
+  
+
+            <div id="guestSection" class="d-flex align-items-center">
+              <button class="btn btn-outline-light me-2" onclick="showLogin()">
+                Đăng nhập
+              </button>
+
+            </div>
+
+            <button
+              class="btn btn-outline-light position-relative ms-2"
+              onclick="showCart()"
+            >
+              <i class="bi bi-cart3"></i>
+              <span
+                id="cartBadge"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill cart-badge d-none"
+                >0</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="margin-top: 76px">
+      <!-- Home Page -->
+      <div id="homePage">
+        <!-- Hero Carousel -->
+        <div
+          id="heroCarousel"
+          class="carousel slide hero-carousel"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#heroCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#heroCarousel"
+              data-bs-slide-to="1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#heroCarousel"
+              data-bs-slide-to="2"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div style="background-image: url(./assets/images/banner.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;" class="carousel-item active">
+              <div class="hero-content">
+                <div>
+                  <h1 class="hero-title">Give your clothes a second chance, <br/>
+not your ex</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#heroCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+
+        <!-- Categories Section -->
+        <section class="category-section">
+            <div class="row">
+                <div class="col-md-4 ">
+                    <div class="py-3">
+                         <img width="450px" height="740px" src="./assets/images/top-img-0.jpg" class=" mx-auto d-block" alt="...">
+                    </div>
+                   
+                </div>
+                <div class="col-md-3">
+                    <div class="d-flex flex-column gap-2 py-3">
+                        <img width="350px" height="355px" src="./assets/images/top-img-1.jpg" class=" mx-auto d-block" alt="...">
+                        <img width="350px" height="355px" src="./assets/images/top-img-2.jpg" class=" mx-auto d-block" alt="...">
+                    </div>
+                  
+                </div>
+                <div class="col-md-5">
+                    <div class="box-content py-3">
+                        <h1>OUR STORY</h1>
+                        <p>Pick.si ra đời từ mong muốn tạo ra một giải pháp bền vững và tiện lợi cho những ai yêu thích phong cách sống xanh, đồng thời giảm thiểu tác động tiêu cực từ ngành công nghiệp thời trang đến môi trường. </p>
+                        <p>Trong bối cảnh thế giới đang đối mặt với khủng hoảng rác thải và tài nguyên, Pick.si mang đến một phương thức mới giúp tối ưu vòng đời sản phẩm, đặc biệt là các món đồ thời trang đã qua sử dụng. Câu chuyện thương hiệu của Pick.si không chỉ là việc trao đổi đồ cũ mà còn là việc trao lại giá trị cho những món đồ, giúp chúng “hồi sinh” và tiếp tục hành trình của mình trong một cộng đồng yêu thích sự sáng tạo và cá tính. </p>
+                        <p>Mỗi món đồ trong Pick.si đều có một câu chuyện riêng, từ những bộ đồ vintage độc đáo đến những phụ kiện phong cách, tất cả đều mang trong mình giá trị tinh thần và ký ức.</p>
+                    </div>
+                </div>
+            </div>
+        
+        </section>
+
+        <!-- Featured Products -->
+        <section class="product-section">
+      
+            <h2 class="section-title">Sống xanh cùng Pick.si </h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-center align-items-center gap-4  ">
+                    <div class="box-img-mid">
+                        <img width="735px" height="400px" src="./assets/images/prd2.jpg" class="mx-auto d-block" alt="...">
+                        <p class="m-0 text-center py-3 ">Mua – bán – trao đổi quần áo cũ để vừa tiết kiệm chi phí, vừa làm mới phong cách. </p>
+                    </div>
+                     <div class="box-img-mid">
+                        <img width="735px" height="400px" src="./assets/images/prd3.jpg" class="mx-auto d-block" alt="...">
+                        <p class="m-0 text-center py-3">Mua – bán – trao đổi quần áo cũ để vừa tiết kiệm chi phí, vừa làm mới phong cách. </p>
+                    </div>
+                    </div>  
+                 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="d-flex justify-content-center align-items-center gap-3">
+                    <div class="box-img-mid">
+                        <img width="470px" height="470px" src="./assets/images/bot-img.jpg" class="mx-auto d-block" alt="...">
+                        <h2 class="text-center p-2">Khám phá secondhand</h2>
+                        <p class="m-0 text-center py-3 ">Tìm hiểu vì sao quần áo cũ vẫn còn giá trị và cách chọn món đồ secondhand chất lượng </p>
+                    </div>
+                      <div class="box-img-mid">
+                        <img width="470px" height="470px" src="./assets/images/bot-img-2.jpg" class="mx-auto d-block" alt="...">
+                        <h2 class="text-center p-2">Swap Stories</h2>
+                        <p class="m-0 text-center py-3 ">Đọc những câu chuyện thú vị từ cộng đồng Pick.si – nơi mỗi món đồ đều có hành trình mới 
+
+</p>
+                    </div>
+                      <div class="box-img-mid">
+                        <img width="470px" height="470px" src="./assets/images/bot-img-3.jpg" class="mx-auto d-block" alt="...">
+                        <h2 class="text-center p-2">Mẹo mix & tái chế</h2>
+                        <p class="m-0 text-center py-3 ">Học cách phối đồ secondhand, tái chế sáng tạo để thổi hồn mới vào trang phục cũ  </p>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+          
+        </section>
+      </div>
+
+  
+      <div id="otherPages" class="d-none">
+        <div >
+          <div id="pageContent">
+           
+          </div>
+        </div>
+      </div>
+    </main>
+
+   
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5><i class="bi bi-gem"></i> Picksi</h5>
+            <p>
+              Thương hiệu thời trang sang trọng, mang đến phong cách độc đáo cho
+              bạn.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5>Liên Hệ</h5>
+            <p><i class="bi bi-geo-alt"></i> 123 Đường ABC, Quận 1, TP.HCM</p>
+            <p><i class="bi bi-phone"></i> 0123 456 789</p>
+            <p><i class="bi bi-envelope"></i> info@picksi.com</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Theo Dõi Chúng Tôi</h5>
+            <div class="d-flex">
+              <a href="#" class="me-3"><i class="bi bi-facebook fs-4"></i></a>
+              <a href="#" class="me-3"><i class="bi bi-instagram fs-4"></i></a>
+              <a href="#" class="me-3"><i class="bi bi-twitter fs-4"></i></a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4" />
+        <div class="text-center">
+          <p>&copy; 2024 Picksi. Tất cả quyền được bảo lưu.</p>
+        </div>
+      </div>
+    </footer>
+
+  
+    <div class="modal fade" id="topUpModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Nạp Tiền Vào Tài Khoản</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="topUpForm">
+              <div class="mb-3">
+                <label class="form-label">Số tiền muốn nạp (VNĐ)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="topUpAmount"
+                  min="10000"
+                  step="1000"
+                  placeholder="Ví dụ: 50000"
+                />
+                <div class="form-text">Tỷ giá: 10.000 VNĐ = 10 $C</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Hủy
+            </button>
+            <button
+              type="button"
+              class="btn btn-warning"
+              onclick="processTopUp()"
+            >
+              Xác Nhận Nạp Tiền
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="successToast" class="toast" role="alert">
+        <div class="toast-header">
+          <i class="bi bi-check-circle-fill text-success me-2"></i>
+          <strong class="me-auto">Thành công</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+          ></button>
+        </div>
+        <div class="toast-body" id="toastMessage">
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+      const mockProducts = {
+        men: [
+          {
+            id: 1,
+            name: "Sơ mi linen xanh navy dáng rộng",
+            price: 40,
+            category: "men",
+            images: ["./assets/images/Men/IMG_3192.JPG","./assets/images/Men/IMG_3194.JPG","./assets/images/Men/IMG_3194.JPG"], 
+            description:
+              "Áo sơ mi nam chất liệu cotton cao cấp, thiết kế sang trọng",
+          },
+          {
+            id: 2,
+            name: "Quần jeans ống rộng basic xám bạc",
+            price: 55,
+            category: "men",
+            images:["./assets/images/Men/IMG_3197.JPG","./assets/images/Men/IMG_3198.JPG","./assets/images/Men/IMG_3199.JPG"], 
+            description:
+              "Quần tây nam form slim fit, phù hợp đi làm và dự tiệc",
+          },
+            {
+            id: 3,
+            name: "Áo polo navy phối cổ sơ mi",
+            price: 55,
+            category: "men",
+            images:["./assets/images/Men/IMG_3200.JPG","./assets/images/Men/IMG_3201.JPG","./assets/images/Men/IMG_3202.JPG"], 
+            description:
+              "Quần tây nam form slim fit, phù hợp đi làm và dự tiệc",
+          },
+            {
+            id: 4,
+            name: "Áo thun trắng in chữ oversize ",
+            price: 55,
+            category: "men",
+            images:["./assets/images/Men/IMG_3209.JPG","./assets/images/Men/IMG_3208.JPG"], 
+            description:
+              "Quần tây nam form slim fit, phù hợp đi làm và dự tiệc",
+          },
+             {
+            id: 5,
+            name: "Áo sơ mi hè kẻ sọc ",
+            price: 55,
+            category: "men",
+            images:["./assets/images/Men/IMG_3267.JPG","./assets/images/Men/IMG_3267.JPG","./assets/images/Men/IMG_3267.JPG"], 
+            description:
+              "Quần tây nam form slim fit, phù hợp đi làm và dự tiệc",
+          },
+           {
+            id: 6,
+            name: "Áo sơ mi cộc hàn quốc oversize ",
+            price: 55,
+            category: "men",
+            images:["./assets/images/Men/IMG_3219.JPG","./assets/images/Men/IMG_3220.JPG","./assets/images/Men/IMG_3220.JPG"], 
+            description:
+              "Quần tây nam form slim fit, phù hợp đi làm và dự tiệc",
+          },
+            {
+            id: 7,
+            name: "Set sơ mi jean xanh đậm & quần short ",
+            price: 55,
+            category: "men",
+            images:["./assets/images/Men/IMG_3233.JPG","./assets/images/Men/IMG_3234.JPG"], 
+            description:
+              "Quần tây nam form slim fit, phù hợp đi làm và dự tiệc",
+          },
+           {
+            id: 8,
+            name: "Áo sweater xám oversize   ",
+            price: 55,
+            category: "men",
+            images:["./assets/images/Men/IMG_3240.JPG","./assets/images/Men/IMG_3241.JPG", "./assets/images/Men/IMG_3242.JPG"], 
+            description:
+              "Quần tây nam form slim fit, phù hợp đi làm và dự tiệc",
+          },
+        ],
+        women: [
+          {
+            id: 9,
+            name: "Áo cổ tim nữ dây thắt eo",
+            price: 65,
+            category: "women",
+            images:["./assets/images/Women/a1.jpg","./assets/images/Women/a2.jpg","./assets/images/Women/a3.jpg"], 
+            description: "Váy dạ hội thiết kế độc quyền, chất liệu lụa cao cấp",
+          },
+          {
+            id: 10,
+            name: "Váy babydoll xanh kẻ sọc",
+            price: 35,
+            category: "women",
+            images:["./assets/images/Women/b1.jpg","./assets/images/Women/b2.jpg","./assets/images/Women/b3.jpg"], 
+            description: "Áo blouse nữ phong cách Hàn Quốc, chất liệu chiffon",
+          },
+          {
+            id: 11,
+            name: "Đầm hai dây xếp tầng",
+            price: 65,
+            category: "women",
+            images:["./assets/images/Women/IMG_3164.JPG","./assets/images/Women/IMG_3165.JPG","./assets/images/Women/IMG_3166.JPG"], 
+            description: "Váy dạ hội thiết kế độc quyền, chất liệu lụa cao cấp",
+          },
+          {
+            id: 12,
+            name: "Đầm caro đỏ cổ vuông chun ngực",
+            price: 35,
+            category: "women",
+          images:["./assets/images/Women/IMG_3151.JPG","./assets/images/Women/IMG_3152.JPG","./assets/images/Women/IMG_3153.JPG"], 
+            description: "Váy dạ hội thiết kế độc quyền, chất liệu lụa cao cấp",
+          },
+          {
+            id: 13,
+            name: "Đầm trắng tay dài basic",
+            price: 55,
+            category: "women",
+            images:["./assets/images/Women/IMG_3114.JPG","./assets/images/Women/IMG_3115.JPG"], 
+            description: "Váy dạ hội thiết kế độc quyền, chất liệu lụa cao cấp",
+          },
+          {
+            id: 14,
+            name: "Chân váy trắng bèo lệch ",
+            price: 50,
+            category: "women",
+          images:["./assets/images/Women/IMG_3161.JPG","./assets/images/Women/IMG_3162.JPG","./assets/images/Women/IMG_3163.JPG"], 
+            description: "Váy dạ hội thiết kế độc quyền, chất liệu lụa cao cấp",
+          },
+          {
+            id: 15,
+            name: "Váy ôm trắng basic",
+            price: 65,
+            category: "women",
+          images:["./assets/images/Women/IMG_3116.JPG","./assets/images/Women/IMG_3117.JPG"], 
+            description: "Váy dạ hội thiết kế độc quyền, chất liệu lụa cao cấp",
+          },
+          
+        ],
+      };
+
+    const mockUserProducts = [
+        {
+            id: 101,
+            name: "Áo sơ mi hè kẻ sọc",
+            price: 15,
+            images:["./assets/images/Men/IMG_3267.JPG","./assets/images/Men/IMG_3267.JPG","./assets/images/Men/IMG_3267.JPG"], 
+            condition: "Đã sử dụng 3 tháng",
+        },
+        {
+            id: 102,
+            name: "Váy ôm trắng basic",
+            price: 25,
+            images:["./assets/images/Women/IMG_3116.JPG","./assets/images/Women/IMG_3117.JPG"], 
+            condition: "Như mới",
+        },
+        {
+            id: 103,
+            name: "Đầm trắng tay dài basic",
+            price: 55,
+            images:["./assets/images/Women/IMG_3114.JPG","./assets/images/Women/IMG_3115.JPG"], 
+            condition: "Đã sử dụng 6 tháng",
+        },
+  
+
+          {
+            id: 106,
+            name: "Sơ mi linen xanh navy dáng rộng",
+            price: 40,
+            images: ["./assets/images/Men/IMG_3192.JPG","./assets/images/Men/IMG_3194.JPG","./assets/images/Men/IMG_3194.JPG"], 
+            condition: "Đã sử dụng 6 tháng",
+        },
+
+          {
+            id: 107,
+            name: "Đầm hai dây xếp tầng",
+            price: 65,
+             images:["./assets/images/Women/IMG_3164.JPG","./assets/images/Women/IMG_3165.JPG","./assets/images/Women/IMG_3166.JPG"], 
+            condition: "Đã sử dụng 6 tháng",
+        },
+
+           {
+            id: 157,
+            name: "Đầm caro đỏ cổ vuông chun ngực",
+            price: 35,
+           images:["./assets/images/Women/IMG_3151.JPG","./assets/images/Women/IMG_3152.JPG","./assets/images/Women/IMG_3153.JPG"],  
+            condition: "Đã sử dụng 6 tháng",
+        },
+
+           {
+            id: 113,
+            name: "Áo cổ tim nữ dây thắt eo",
+            price: 55,
+            images:["./assets/images/Women/a1.jpg","./assets/images/Women/a2.jpg","./assets/images/Women/a3.jpg"], 
+            condition: "Đã sử dụng 6 tháng",
+           },
+
+
+             {
+            id: 111,
+            name: "Áo sơ mi cộc hàn quốc oversize",
+            price: 40,
+          images:["./assets/images/Men/IMG_3219.JPG","./assets/images/Men/IMG_3220.JPG","./assets/images/Men/IMG_3220.JPG"], 
+            condition: "Đã sử dụng 6 tháng",
+           },
+
+      
+        ];
+function openSwapDetailsDemo() {
+    const existingPopup = document.getElementById("swapDetailsPopup");
+    if (existingPopup) existingPopup.remove();
+    
+    const popup = document.createElement("div");
+    popup.id = "swapDetailsPopup";
+    popup.className = "position-fixed top-50 start-50 translate-middle bg-white shadow-lg rounded p-4";
+    popup.style.width = "450px";
+    popup.style.zIndex = 2000;
+
+    popup.innerHTML = `
+        <h5 class="mb-3">Yêu cầu swap mới</h5>
+        <p class="mb-2"><strong>Ai đó</strong> muốn trao đổi sản phẩm với bạn</p>
+        <div class="d-flex gap-2 mb-3">
+            <div class="text-center" style="flex:1;">
+                <p class="mb-1">Sản phẩm họ muốn</p>
+                <img src="./assets/images/Men/IMG_3192.JPG" alt="Sản phẩm họ muốn" class="img-fluid rounded">
+                <p>40C$</p>
+            </div>
+            <div class="text-center" style="flex:1;">
+                <p class="mb-1">Sản phẩm của bạn</p>
+                <img src="./assets/images/Men/IMG_3219.JPG" alt="Sản phẩm của bạn" class="img-fluid rounded">
+                <p>40C$</p>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-success btn-sm" onclick="acceptSwapDemo()">Chấp nhận</button>
+            <button class="btn btn-danger btn-sm" onclick="declineSwapDemo()">Từ chối</button>
+        </div>
+        <button style="position:absolute; top:5px; right:10px; border:none; background:none; font-size:1.2rem; cursor:pointer;" onclick="closeSwapPopupDemo()">&times;</button>
+    `;
+    document.body.appendChild(popup);
+}
+
+function closeSwapPopupDemo() {
+    const popup = document.getElementById("swapDetailsPopup");
+    if (popup) popup.remove();
+}
+
+function acceptSwapDemo() {
+    alert("Bạn đã chấp nhận swap!");
+    closeSwapPopupDemo();
+}
+
+function declineSwapDemo() {
+    alert("Bạn đã từ chối swap!");
+    closeSwapPopupDemo();
+}
+
+// State Management
+const appState = {
+    currentUser: JSON.parse(localStorage.getItem("currentUser")) || null,
+    cart: JSON.parse(localStorage.getItem("cart")) || [],
+    currentPage: "home"
+};
+
+function updateState(newState) {
+    Object.assign(appState, newState);
+    if (newState.cart !== undefined) {
+        localStorage.setItem("cart", JSON.stringify(appState.cart));
+        updateCartBadge();
+    }
+    if (newState.currentUser !== undefined) {
+        localStorage.setItem("currentUser", JSON.stringify(appState.currentUser));
+        updateUserInterface();
+    }
+}
+
+// Notification Handlers
+function setupNotificationHandlers() {
+    const notificationWrapper = document.getElementById("notificationWrapper");
+    const notificationPopup = document.getElementById("notificationPopup");
+    const closeNotification = document.getElementById("closeNotification");
+    const notificationBadge = document.getElementById("notificationBadge");
+
+    if (!notificationWrapper) return;
+
+    notificationWrapper.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const isHidden = notificationPopup.style.display === "none" || 
+                         notificationPopup.style.display === "";
+        
+        notificationPopup.style.display = isHidden ? "block" : "none";
+        if (isHidden) {
+            notificationBadge.classList.add("d-none");
+        }
+    });
+
+    closeNotification?.addEventListener("click", (e) => {
+        e.stopPropagation();
+        notificationPopup.style.display = "none";
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!notificationWrapper.contains(e.target)) {
+            notificationPopup.style.display = "none";
+        }
+    });
+}
+
+// Initialize
+document.addEventListener("DOMContentLoaded", function () {
+    updateUserInterface();
+    loadFeaturedProducts();
+    updateCartBadge();
+    setupNotificationHandlers();
+
+    // Top up amount calculation
+    document.getElementById("topUpAmount")?.addEventListener("input", function () {
+        const vndAmount = parseInt(this.value) || 0;
+        const cAmount = vndAmount * 0.001;
+        const convertedField = document.getElementById("convertedAmount");
+        if (convertedField) {
+            convertedField.value = cAmount.toFixed(1) + " $C";
+        }
+    });
+});
+
+// User Management
+function updateUserInterface() {
+    const userSection = document.getElementById("userSection");
+    const guestSection = document.getElementById("guestSection");
+
+    if (appState.currentUser) {
+        document.getElementById("username").textContent = appState.currentUser.username;
+        document.getElementById("balance").textContent = appState.currentUser.balance || 0;
+        userSection.classList.remove("d-none");
+        userSection.classList.add("d-flex");
+        guestSection.classList.add("d-none");
+    } else {
+        userSection.classList.add("d-none");
+        userSection.classList.remove("d-flex");
+        guestSection.classList.remove("d-none");
+    }
+}
+
+function showLogin() {
+    showPage(
+        "login",
+        `
+        <div class="row justify-content-center">
+            <div class="col-md-12 py-5">
+                <div class="card shadow m-auto">
+                    <div class="text-warning text-center">
+                        <h4 class="mb-0 p-4">Đăng Nhập Picksi</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" id="loginUsername" placeholder="Email hoặc số điện thoại" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Mật khẩu" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning w-100">Đăng Nhập</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p>Chưa có tài khoản? <a href="#" onclick="showRegister()" class="text-warning">Đăng ký ngay</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+    );
+
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const username = document.getElementById("loginUsername").value;
+        const password = document.getElementById("loginPassword").value;
+
+        updateState({
+            currentUser: {
+                username: username,
+                balance: 100
+            }
+        });
+        showToast("Đăng nhập thành công!");
+        showHome();
+    });
+}
+
+function showRegister() {
+    showPage(
+        "register",
+        `
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-12 py-5">
+                <div class="card shadow m-auto">
+                    <div class="text-warning">
+                        <h4 class="mb-0 p-4">Đăng Ký Picksi</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label class="form-label">Họ và tên</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Tên đăng nhập</label>
+                                <input type="text" class="form-control" id="regUsername" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Mật khẩu</label>
+                                <input type="password" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Xác nhận mật khẩu</label>
+                                <input type="password" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning w-100">Đăng Ký</button>
+                        </form>
+                        <div class="text-center mt-3">
+                            <p>Đã có tài khoản? <a href="#" onclick="showLogin()" class="text-warning">Đăng nhập</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `
+    );
+
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const username = document.getElementById("regUsername").value;
+
+        updateState({
+            currentUser: {
+                username: username,
+                balance: 50
+            }
+        });
+        showToast("Đăng ký thành công! Chào mừng bạn đến với Picksi!");
+        showHome();
+    });
+}
+
+function logout() {
+    updateState({
+        currentUser: null,
+        cart: []
+    });
+    showToast("Đã đăng xuất thành công!");
+    showHome();
+}
+
+// Page Navigation
+function showHome() {
+    document.getElementById("homePage").classList.remove("d-none");
+    document.getElementById("otherPages").classList.add("d-none");
+    updateState({ currentPage: "home" });
+}
+
+function showPage(page, content) {
+    document.getElementById("homePage").classList.add("d-none");
+    document.getElementById("otherPages").classList.remove("d-none");
+    document.getElementById("pageContent").innerHTML = content;
+    updateState({ currentPage: page });
+}
+
+// Product Functions
+function loadFeaturedProducts() {
+    const container = document.getElementById("featuredProducts");
+    if (!container) return;
+    
+    const featured = [
+        ...mockProducts.men.slice(0, 2),
+        ...mockProducts.women.slice(0, 2),
+    ];
+
+    container.innerHTML = featured.map(product => `
+        <div class="col-md-6 col-lg-3">
+            <div class="product-card" onclick="showProductDetail(${product.id})">
+                <div class="product-image">
+                    <img src="${product.images[0]}" alt="${product.name}" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="card-body p-3">
+                    <h6 class="card-title">${product.name}</h6>
+                    <p class="product-price">${product.price} $C</p>
+                    <button class="btn btn-add-cart btn-sm" onclick="event.stopPropagation(); addToCart(${product.id})">
+                        <i class="bi bi-cart-plus"></i> Thêm vào giỏ
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join("");
+}
+
+function showMenProducts() {
+    showProductList(mockProducts.men, "Thời Trang Nam", "./assets/images/menbanner.png");
+}
+
+function showWomenProducts() {
+    showProductList(mockProducts.women, "Thời Trang Nữ", "./assets/images/womenbanner.png");
+}
+
+function showProductList(products, title, bannerUrl) {
+    const content = `
+        <div class="text-center mb-4">
+            <img src="${bannerUrl}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
+        </div>
+        <div class="row px-3">
+            ${products.map(product => `
+                <div class="col-md-3">
+                    <div class="product-card" onclick="showProductDetail(${product.id})">
+                        <div class="product-image position-relative" style="width: 351px; height: 360px; overflow: hidden;">
+                            <img src="${product.images[0]}" alt="${product.name}" 
+                                 style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="card-body py-3">
+                            <h6 class="card-title fw-semibold mb-1 text-truncate">${product.name}</h6>
+                            <p class="product-price fw-bold mb-0"><span>${product.price}</span><span>$C</span></p>
+                        </div>
+                    </div>
+                </div>
+            `).join("")}
+        </div>
+    `;
+    showPage("products", content);
+}
+
+function showProductDetail(productId) {
+    const product = [...mockProducts.men, ...mockProducts.women].find(p => p.id === productId);
+    if (!product) return;
+    
+    const mainImage = product.images[0];
+    const thumbnails = product.images.map((img, index) => `
+        <div onclick="changeMainImage(this, '${img}')">
+            <img src="${img}" alt="${product.name}" class="thumbnail-image" 
+                 style="width: 100%; height: 80px; object-fit: cover; cursor: pointer; border: ${index === 0 ? '2px solid #FFD700' : '2px solid #ddd'};">
+        </div>
+    `).join("");
+
+    const content = `
+        <div class="row">
+            <div class="col-md-2 py-4 px-4">
+                <div class="d-flex flex-column gap-2">
+                    ${thumbnails}
+                </div>
+            </div>
+            <div class="col-md-4 py-4 px-4">
+                <div id="mainProductImage" class="main-product-image" 
+                     style="width: 474px; height: 600px; border-radius: 12px; overflow: hidden;">
+                    <img src="${mainImage}" alt="${product.name}" 
+                         style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-md-6 py-4 px-4">
+                <h2>${product.name}</h2>
+                <h3 class="product-price mb-4"><span>${product.price}</span><span>$C</span></h3>
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Kích thước:</label>
+                    <div class="size-options d-flex gap-2 mt-2">
+                        ${['S','M','L','XL'].map(size => `
+                            <div class="size-option" data-size="${size}" onclick="selectSize(this)" 
+                                 style="width: 40px; height: 40px; border: 2px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: 600; transition: all 0.3s;">${size}</div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Màu sắc:</label>
+                    <div class="color-options d-flex gap-2 mt-2">
+                        ${[
+                            {color:'black', title:'Đen'},
+                            {color:'white', title:'Trắng'},
+                            {color:'blue', title:'Xanh'},
+                            {color:'red', title:'Đỏ'}
+                        ].map(c => `
+                            <div class="color-option" data-color="${c.color}" onclick="selectColor(this)" 
+                                 style="width: 40px; height: 40px; background: ${c.color === 'white' ? '#fff' : c.color}; border: 2px solid #ddd; border-radius: 50%; cursor: pointer; transition: all 0.3s;" 
+                                 title="${c.title}"></div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn-buy" onclick="buyNow(${product.id})">Buy now</button>
+                    <button class="btn-swap" onclick="showSwapModal(${product.id})">Swap</button>
+                </div>
+            </div>
+        </div>
+    `;
+    showPage("detail", content);
+}
+
+function changeMainImage(imgElement, imageSrc) {
+    const mainImage = document.getElementById("mainProductImage");
+    if (!mainImage) return;
+    
+    mainImage.innerHTML = `<img src="${imageSrc}" alt="Main product image" 
+                               style="width: 100%; height: 100%; object-fit: cover;">`;
+    
+    document.querySelectorAll(".thumbnail-image").forEach(thumb => {
+        thumb.style.border = "2px solid #ddd";
+    });
+    imgElement.querySelector('img').style.border = "2px solid #FFD700";
+}
+
+function selectSize(element) {
+    document.querySelectorAll(".size-option").forEach(option => {
+        option.style.border = "2px solid #ddd";
+        option.style.background = "transparent";
+        option.style.color = "#000";
+    });
+    element.style.border = "2px solid #FFD700";
+    element.style.background = "#FFD700";
+    element.style.color = "#000";
+}
+
+function selectColor(element) {
+    document.querySelectorAll(".color-option").forEach(option => {
+        option.style.border = "2px solid #ddd";
+        option.style.transform = "scale(1)";
+    });
+    element.style.border = "3px solid #FFD700";
+    element.style.transform = "scale(1.1)";
+}
+
+function addToCart(productId) {
+    const product = [...mockProducts.men, ...mockProducts.women].find(p => p.id === productId);
+    if (!product) return;
+    
+    const existingItem = appState.cart.find(item => item.id === productId);
+    let newCart;
+    
+    if (existingItem) {
+        newCart = appState.cart.map(item => 
+            item.id === productId ? {...item, quantity: item.quantity + 1} : item
+        );
+    } else {
+        newCart = [...appState.cart, { ...product, quantity: 1 }];
+    }
+    
+    updateState({ cart: newCart });
+    showToast(`Đã thêm ${product.name} vào giỏ hàng!`);
+}
+
+function updateCartBadge() {
+    const badge = document.getElementById("cartBadge");
+    if (!badge) return;
+    
+    const totalItems = appState.cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (totalItems > 0) {
+        badge.textContent = totalItems;
+        badge.classList.remove("d-none");
+    } else {
+        badge.classList.add("d-none");
+    }
+}
+
+function showCart() {
+    if (appState.cart.length === 0) {
+        showPage(
+            "cart",
+            `
+            <div class="text-center py-5">
+                <i class="bi bi-cart-x" style="font-size: 4rem; color: #ccc;"></i>
+                <h3 class="mt-3">Giỏ hàng trống</h3>
+                <p class="text-muted">Hãy thêm sản phẩm vào giỏ hàng để tiếp tục mua sắm</p>
+                <button class="btn btn-warning" onclick="showHome()">Tiếp tục mua sắm</button>
+            </div>
+            `
+        );
+        return;
+    }
+
+    const total = appState.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    const content = `
+        <div class="card p-4 py-5" style="max-width: 600px; margin: 0 auto;">
+            <h4 class="mb-4 text-center">Giỏ Hàng</h4>
+            ${appState.cart.map(item => `
+                <div class="d-flex align-items-center mb-3 p-2 border rounded">
+                    <div style="width: 80px; height: 80px; flex-shrink: 0; margin-right: 15px;">
+                        <img src="${item.images[0]}" alt="${item.name}" 
+                             class="img-fluid rounded" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-1">${item.name}</h6>
+                        <p class="mb-1 small text-muted">
+                            Size: ${item.selectedSize || 'M'} | Màu: ${item.selectedColor || 'Đen'}
+                        </p>
+                        <strong>${item.price.toFixed(1)} $C</strong>
+                    </div>
+                </div>
+            `).join('')}
+            <hr>
+            <div class="d-flex justify-content-between mb-2">
+                <span>Tạm tính:</span>
+                <span>${total.toFixed(1)} $C</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <span>Phí vận chuyển:</span>
+                <span>Miễn phí</span>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between mb-4">
+                <strong>Tổng cộng:</strong>
+                <strong class="text-warning">${total.toFixed(1)} $C</strong>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-secondary flex-grow-1" onclick="showHome()">
+                    Tiếp tục mua sắm
+                </button>
+                <button class="btn btn-warning flex-grow-1" onclick="showCheckout()">
+                    Thanh toán ngay
+                </button>
+            </div>
+        </div>
+    `;
+    showPage("cart", content);
+}
+
+function updateQuantity(productId, change) {
+    const item = appState.cart.find(item => item.id === productId);
+    if (!item) return;
+    
+    let newCart;
+    if (item.quantity + change <= 0) {
+        newCart = appState.cart.filter(item => item.id !== productId);
+    } else {
+        newCart = appState.cart.map(item => 
+            item.id === productId ? {...item, quantity: item.quantity + change} : item
+        );
+    }
+    
+    updateState({ cart: newCart });
+    showCart();
+}
+
+function removeFromCart(productId) {
+    const newCart = appState.cart.filter(item => item.id !== productId);
+    updateState({ cart: newCart });
+    showCart();
+}
+
+function buyNow(productId) {
+    addToCart(productId);
+    showCheckout();
+}
+
+function showCheckout() {
+    if (!appState.currentUser) {
+        showToast("Vui lòng đăng nhập để thanh toán!");
+        showLogin();
+        return;
+    }
+    
+    if (appState.cart.length === 0) {
+        showToast("Giỏ hàng trống!");
+        return;
+    }
+    
+    const total = appState.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const content = `
+        <div class="px-5 py-5">
+            <h2 class="mb-4">Thanh Toán</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5>Thông Tin Giao Hàng</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="checkoutForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Họ và tên</label>
+                                        <input type="text" class="form-control" value="${appState.currentUser.username}" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Số điện thoại</label>
+                                        <input type="tel" class="form-control" value="0123456789" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Địa chỉ giao hàng</label>
+                                    <textarea class="form-control" rows="3" required>123 Đường ABC, Quận 1, TP.HCM</textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Đơn Hàng Của Bạn</h5>
+                        </div>
+                        <div class="card-body">
+                            ${appState.cart.map(item => `
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>${item.name} x${item.quantity}</span>
+                                    <span>${(item.price * item.quantity).toFixed(1)} $C</span>
+                                </div>
+                            `).join("")}
+                        </div>
+                    </div>
+                </div>                   
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>Thanh Toán</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span>Số dư hiện tại:</span>
+                                    <span class="text-success">${appState.currentUser.balance} $C</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Tổng thanh toán:</span>
+                                    <span class="text-warning">${total.toFixed(1)} $C</span>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <strong>Còn lại:</strong>
+                                    <strong class="${appState.currentUser.balance >= total ? "text-success" : "text-danger"}">
+                                        ${(appState.currentUser.balance - total).toFixed(1)} $C
+                                    </strong>
+                                </div>
+                            </div>
+                            ${appState.currentUser.balance >= total ? 
+                                `<button class="btn btn-success w-100" onclick="processPayment()">
+                                    <i class="bi bi-check-circle"></i> Xác Nhận Thanh Toán
+                                </button>` : 
+                                `<div class="text-center">
+                                    <p class="text-danger">Số dư không đủ!</p>
+                                    <button class="btn btn-warning w-100" onclick="showTopUpModal()">
+                                        <i class="bi bi-plus-circle"></i> Nạp Thêm Tiền
+                                    </button>
+                                </div>`
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    showPage("checkout", content);
+}
+
+function processPayment() {
+    const total = appState.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    
+    if (appState.currentUser.balance >= total) {
+        updateState({
+            currentUser: {
+                ...appState.currentUser,
+                balance: appState.currentUser.balance - total
+            },
+            cart: []
+        });
+        showToast("Thanh toán thành công! Đơn hàng đang được xử lý.");
+        showHome();
+    } else {
+        showToast("Số dư không đủ để thanh toán!");
+    }
+}
+
+function showTopUpModal() {
+    if (!appState.currentUser) {
+        showToast("Vui lòng đăng nhập để nạp tiền!");
+        showLogin();
+        return;
+    }
+
+    const modal = new bootstrap.Modal(document.getElementById("topUpModal"));
+    modal.show();
+}
+
+function processTopUp() {
+    const vndAmount = parseInt(document.getElementById("topUpAmount").value);
+    
+    if (!vndAmount || vndAmount < 10000) {
+        showToast("Vui lòng nhập số tiền hợp lệ (tối thiểu 10.000 VNĐ)!");
+        return;
+    }
+    
+    const cAmount = vndAmount * 0.001;
+    updateState({
+        currentUser: {
+            ...appState.currentUser,
+            balance: parseFloat(appState.currentUser.balance) + cAmount
+        }
+    });
+    
+    const modal = bootstrap.Modal.getInstance(document.getElementById("topUpModal"));
+    modal.hide();
+    
+    showToast(`Nạp thành công ${vndAmount.toLocaleString()} VNĐ = ${cAmount.toFixed(1)} $C`);
+    document.getElementById("topUpAmount").value = "";
+    document.getElementById("convertedAmount").value = "";
+}
+
+function showMyProducts() {
+    if (!appState.currentUser) {
+        showToast("Vui lòng đăng nhập để xem sản phẩm của bạn!");
+        showLogin();
+        return;
+    }
+    
+    const swapInfo = appState.swapTargetProduct ? 
+        `<div class="alert alert-info mx-4">
+            <i class="bi bi-info-circle"></i> Đang chọn sản phẩm để trao đổi với: <strong>${appState.swapTargetProduct.name}</strong>
+        </div>` : '';
+    
+    const content = `
+        <div class="px-4 py-4">
+            <h2 class="mb-4 text-center">Sản Phẩm Của Tôi</h2>
+            ${swapInfo}
+        </div>
+        <div class="row">
+            ${mockUserProducts.map(product => `
+                <div class="col-md-3 text-center py-5">
+                    <div class="mb-3" style="width: 370px;height: 350px;">
+                        <img src="${product.images && product.images.length > 0 ? product.images[0] : './assets/images/default.jpg'}" 
+                             alt="${product.name}" 
+                             class="img-fluid rounded" 
+                             style="height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>${product.name}</h3>
+                    <p class="text-muted small">${product.condition}</p>
+                    <p class="text-warning">Giá trị: ${product.price} $C</p>
+                    <button class="btn btn-outline-primary btn-sm" onclick="selectForSwap(${product.id})">
+                        <i class="bi bi-arrow-left-right"></i> 
+                        ${appState.swapTargetProduct ? 'Chọn để Swap' : 'Xem chi tiết'}
+                    </button>
+                </div>
+            `).join('')}
+        </div>
+    `;
+    showPage("myproducts", content);
+}
+
+
+function showSwapModal(targetProductId) {
+    if (!appState.currentUser) {
+        showToast("Vui lòng đăng nhập để swap sản phẩm!");
+        showLogin();
+        return;
+    }
+    
+    // Lưu sản phẩm mục tiêu vào state
+    const targetProduct = [...mockProducts.men, ...mockProducts.women].find(p => p.id === targetProductId);
+    if (targetProduct) {
+        updateState({ swapTargetProduct: targetProduct });
+    }
+    
+    // Hiển thị trang sản phẩm của tôi
+    showMyProducts();
+}
+
+function selectForSwap(myProductId) {
+    const myProduct = mockUserProducts.find((p) => p.id === myProductId);
+    
+    // Kiểm tra xem có sản phẩm mục tiêu không
+    if (!appState.swapTargetProduct) {
+        showToast("Không tìm thấy sản phẩm muốn swap!");
+        return;
+    }
+    
+    const targetProduct = appState.swapTargetProduct;
+    
+    const modalHtml = `
+        <div class="modal fade" id="swapModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Xác Nhận Trao Đổi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 text-center">
+                                <h6>Sản phẩm bạn muốn</h6>
+                                <div class="mb-3" style="height: 200px;">
+                                    <img src="${targetProduct.images && targetProduct.images.length > 0 ? targetProduct.images[0] : './assets/images/default.jpg'}"
+                                         alt="${targetProduct.name}"
+                                         class="img-fluid rounded"
+                                         style="height: 100%; object-fit: cover;">
+                                </div>
+                                <p><strong>${targetProduct.name}</strong></p>
+                                <p class="text-warning">${targetProduct.price} $C</p>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <h6>Sản phẩm của bạn</h6>
+                                <div class="mb-3" style="height: 200px;">
+                                    <img src="${myProduct.images && myProduct.images.length > 0 ? myProduct.images[0] : './assets/images/default.jpg'}"
+                                         alt="${myProduct.name}"
+                                         class="img-fluid rounded"
+                                         style="height: 100%; object-fit: cover;">
+                                </div>
+                                <p><strong>${myProduct.name}</strong></p>
+                                <p class="text-warning">${myProduct.price} $C</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <form id="swapForm">
+                            <div class="mb-3">
+                                <label class="form-label">Lý do muốn trao đổi</label>
+                                <textarea class="form-control" rows="3" placeholder="Ví dụ: Tôi muốn đổi size, màu sắc..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Thông tin liên hệ</label>
+                                <input type="text" class="form-control" placeholder="Số điện thoại hoặc email">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-primary" onclick="submitSwapRequest(${targetProduct.id}, ${myProduct.id})">Gửi Yêu Cầu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML("beforeend", modalHtml);
+    const modal = new bootstrap.Modal(document.getElementById("swapModal"));
+    modal.show();
+    
+    document.getElementById("swapModal").addEventListener("hidden.bs.modal", function () {
+        this.remove();
+        // Reset state swap khi đóng modal
+        updateState({ swapTargetProduct: null });
+    });
+}
+
+
+function submitSwapRequest(targetProductId, myProductId) {
+    const targetProduct = [...mockProducts.men, ...mockProducts.women].find(p => p.id === targetProductId);
+    const myProduct = mockUserProducts.find(p => p.id === myProductId);
+    
+    if (targetProduct && myProduct) {
+        showToast(`Yêu cầu trao đổi ${myProduct.name} lấy ${targetProduct.name} đã được gửi! Chúng tôi sẽ liên hệ với bạn sớm.`);
+    } else {
+        showToast("Yêu cầu trao đổi đã được gửi! Chúng tôi sẽ liên hệ với bạn sớm.");
+    }
+    
+    const modal = bootstrap.Modal.getInstance(document.getElementById("swapModal"));
+    modal.hide();
+    
+    // Reset state và quay về trang chủ
+    updateState({ swapTargetProduct: null });
+    showHome();
+}
+
+function showContact(type) {
+    const title = type === "picksi" ? "Liên Hệ Với Picksi" : "Liên Hệ Với Người Bán";
+    const content = `
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="card p-5 m-5">
+                <h3 class="text-center">${title}</h3>
+                <form id="contactForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="tel" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Chủ đề</label>
+                        <select class="form-select">
+                            <option>Hỗ trợ kỹ thuật</option>
+                            <option>Khiếu nại sản phẩm</option>
+                            <option>Tư vấn mua hàng</option>
+                            <option>Khác</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nội dung</label>
+                        <textarea class="form-control" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning w-100">
+                        <i class="bi bi-send"></i> Gửi Liên Hệ
+                    </button>
+                </form>    
+            </div>
+        </div>
+    `;
+    
+    showPage("contact", content);
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        showToast("Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi trong 24h.");
+        showHome();
+    });
+}
+
+function showToast(message) {
+    const toastMessage = document.getElementById("toastMessage");
+    if (toastMessage) {
+        toastMessage.textContent = message;
+        const toast = new bootstrap.Toast(document.getElementById("successToast"));
+        toast.show();
+    }
+}
+       
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'993014a996eb1097',t:'MTc2MTIxMDQxMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
